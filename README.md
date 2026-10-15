@@ -1,3 +1,5 @@
+![mod-release-bot](.github/preview.png)
+
 # mod-release-bot
 
 Turns a GitHub release of a Blackshield Company Skyrim mod into review-ready **drafts**:
