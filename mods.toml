@@ -1,0 +1,67 @@
+# GitHub repo -> Nexus mod. `repo` defaults to "<owner>/<key>". nexus_id is optional;
+# without it, posts link to the GitHub release instead.
+owner = "Blackshield-Company"
+
+[defaults]
+hashtags = ["Skyrim", "SkyrimMods"]
+subreddit = "skyrimmods"
+
+[mods.scarred-steel]
+name = "Scarred Steel"
+blurb = "Weapon and armor wear with grindstone and workbench repair. No SKSE."
+
+[mods.company-quartermaster]
+name = "Company Quartermaster"
+
+[mods.blackshield-company]
+name = "Blackshield Company"
+nexus_id = 194203
+
+[mods.bounties-of-oblivion]
+name = "Bounties of Oblivion"
+nexus_id = 194204
+
+[mods.contract-hunter]
+name = "Contract Hunter"
+nexus_id = 194206
+
+[mods.steel-oath]
+name = "Steel Oath"
+nexus_id = 194208
+
+[mods.ember-smithing]
+name = "Ember Smithing"
+nexus_id = 194210
+
+[mods.war-banners]
+name = "War Banners"
+
+[mods.roadwarden]
+name = "Roadwarden"
+
+[mods.champions-reforge]
+name = "Champion's Reforge"
+
+[mods.rival-companies]
+name = "Rival Companies"
+
+[mods.blackshield-codex]
+name = "Blackshield Codex"
+
+[mods.sellsword-roster]
+name = "Sellsword Roster"
+
+[mods.the-ledger-of-ash]
+name = "The Ledger of Ash"
+
+[mods.the-gray-mane-debt]
+name = "The Gray-Mane Debt"
+
+[mods.barrow-iron-pact]
+name = "Barrow Iron Pact"
+
+[mods.oathbreakers-price]
+name = "Oathbreaker's Price"
+
+[mods.the-turncoat-contract]
+name = "The Turncoat Contract"

@@ -1,0 +1,6 @@
+Scarred Steel 0.2.0 is out ⚔️
+
+Added: on/off wear hints. Each wear tier change shows a short notice (e.g. "Your blade is dulling (Dulled)"), and you can toggle them from the Inspect Gear power or with set SCS_WearHints to 0.
+
+https://github.com/Blackshield-Company/scarred-steel/releases/tag/v0.2.0
+#Skyrim #SkyrimMods

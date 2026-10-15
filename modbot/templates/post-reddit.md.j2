@@ -1,0 +1,15 @@
+Title: {{ title }}
+Subreddit: r/{{ mod.subreddit }}
+
+---
+
+**{{ mod.name }} {{ ver }}** is out.{% if mod.blurb %} {{ mod.blurb }}{% endif %}
+
+## What's new
+
+{{ notes }}
+
+## Links
+
+{% if mod.nexus_url %}- Nexus Mods: {{ mod.nexus_url }}
+{% endif %}- GitHub release: {{ rel.url }}
