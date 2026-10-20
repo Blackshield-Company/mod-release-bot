@@ -1,6 +1,6 @@
 # GitHub repo -> Nexus mod. `repo` defaults to "<owner>/<key>". nexus_id is optional;
 # without it, posts link to the GitHub release instead.
-owner = "Blackshield-Company"
+owner = "synthalorian"
 
 [defaults]
 hashtags = ["Skyrim", "SkyrimMods"]

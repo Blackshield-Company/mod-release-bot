@@ -4,8 +4,8 @@ from conftest import ROOT
 
 def test_load(mods):
     m = config.find(mods, "scarred-steel")
-    assert m.repo == "Blackshield-Company/scarred-steel" and m.nexus_url is None
-    assert config.find(mods, "Blackshield-Company/steel-oath").nexus_id == 194208
+    assert m.repo == "synthalorian/scarred-steel" and m.nexus_url is None
+    assert config.find(mods, "synthalorian/steel-oath").nexus_id == 194208
 
 def test_unknown(mods):
     with pytest.raises(KeyError):

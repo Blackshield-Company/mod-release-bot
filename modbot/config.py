@@ -26,7 +26,7 @@ class Mod:
 def load(path) -> dict[str, Mod]:
     with open(path, "rb") as f:
         data = tomllib.load(f)
-    owner = data.get("owner", "Blackshield-Company")
+    owner = data.get("owner", "synthalorian")
     defaults = data.get("defaults", {})
     mods = {}
     for slug, m in data.get("mods", {}).items():

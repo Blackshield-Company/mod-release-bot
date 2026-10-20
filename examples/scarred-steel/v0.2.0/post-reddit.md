@@ -11,4 +11,4 @@ Added: on/off wear hints. Each wear tier change shows a short notice (e.g. "Your
 
 ## Links
 
-- GitHub release: https://github.com/Blackshield-Company/scarred-steel/releases/tag/v0.2.0
+- GitHub release: https://github.com/synthalorian/scarred-steel/releases/tag/v0.2.0

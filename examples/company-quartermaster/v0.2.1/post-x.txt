@@ -2,5 +2,5 @@ Company Quartermaster 0.2.1 is out ⚔️
 
 Brynja looked like a different female bandit each hire because her NPC used the leveled bandit list LCharBanditMeleeNordF as a template with the Traits flag.
 
-https://github.com/Blackshield-Company/company-quartermaster/releases/tag/v0.2.1
+https://github.com/synthalorian/company-quartermaster/releases/tag/v0.2.1
 #Skyrim #SkyrimMods

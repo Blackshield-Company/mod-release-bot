@@ -19,4 +19,4 @@ Early beta: passes Papyrus compile, plugin validation, FOMOD schema, the series 
 
 ## Links
 
-- GitHub release: https://github.com/Blackshield-Company/company-quartermaster/releases/tag/v0.2.1
+- GitHub release: https://github.com/synthalorian/company-quartermaster/releases/tag/v0.2.1

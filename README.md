@@ -53,7 +53,7 @@ Options (any subcommand): `--config mods.toml`, `--out drafts`, `--dry-run`, `--
 Maps each GitHub repo to a display name and an optional Nexus mod ID:
 
 ```toml
-owner = "Blackshield-Company"
+owner = "synthalorian"
 
 [defaults]
 hashtags = ["Skyrim", "SkyrimMods"]
