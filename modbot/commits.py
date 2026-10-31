@@ -44,10 +44,10 @@ def parse(message: str, sha: str = "") -> Commit:
         if fm:
             current = [fm["text"].strip()]
             notes.append(current)
-        elif current is not None and ln.strip() and not _FOOTER.match(ln):
-            current.append(ln.strip())  # footer values may wrap onto following lines
-        else:
+        elif _FOOTER.match(ln):
             current = None
+        elif current is not None:
+            current.append(ln.strip())  # footer values run until the next token, blank lines and all (git trailers)
     note = " ".join(" ".join(p for p in n if p) for n in notes).strip()
     return Commit(sha=sha, subject=subject, type=m["type"].lower(), scope=(m["scope"] or "").strip() or None,
                   description=m["desc"].strip(), breaking=bool(m["bang"] or notes), breaking_note=note)
@@ -106,7 +106,8 @@ def to_markdown(groups: dict[str, list[Commit]]) -> str:
 
 
 def x_summary(groups: dict[str, list[Commit]]) -> str:
-    """One short sentence per group ("New: a; b."), most important first, so drafts.summary() can keep whole ones."""
+    """One short sentence per group ("New: a; b."), most important first, so drafts.summary() can keep whole ones
+    (it word-trims the first one if even that is too long)."""
     out = []
     for key, _ in GROUPS:
         if key in groups:

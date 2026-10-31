@@ -31,6 +31,15 @@ def test_breaking_change_hyphen_footer_and_wrapping():
     c = parse("fix: x\n\nBREAKING-CHANGE: the global SCS_Wear\n  is now SCS_WearRate\nReviewed-by: A")
     assert c.breaking and c.breaking_note == "the global SCS_Wear is now SCS_WearRate"
 
+def test_breaking_footer_keeps_paragraphs_until_next_token():
+    c = parse("feat(save): new format\n\nBREAKING CHANGE: old saves need a clean reload.\n\n"
+              "To migrate, load in a clean save, then\n  re-enable the plugin.\n\nRefs #12\nReviewed-by: A")
+    assert c.breaking_note == "old saves need a clean reload. To migrate, load in a clean save, then re-enable the plugin."
+
+def test_body_before_breaking_footer_is_not_captured():
+    c = parse("fix: x\n\nSome body.\n\nBREAKING CHANGE: a\n\nb\n")
+    assert c.breaking_note == "a b"
+
 def test_lowercase_breaking_footer_is_not_breaking():
     assert not parse("fix: x\n\nbreaking change: nope").breaking
 
@@ -123,6 +132,13 @@ def test_x_keeps_whole_sentences():
     rel = {"tag": "v1", "body": commits.to_markdown(g), "url": "https://github.com/o/r/releases/tag/v1"}
     x = drafts.build(config.Mod(repo="o/r", name="R"), rel, x_text=commits.x_summary(g))["post-x.txt"]
     assert "Breaking: drop the legacy plugin; new save format." in x and "…" not in x
+
+def test_x_first_group_too_long_is_word_trimmed():
+    # Documented fallback: when not even the first sentence fits, it is cut at a word with an ellipsis.
+    g = commits.group([parse("feat: " + " ".join(["word"] * 100))])
+    rel = {"tag": "v1", "body": commits.to_markdown(g), "url": "https://github.com/o/r/releases/tag/v1"}
+    x = drafts.build(config.Mod(repo="o/r", name="R"), rel, x_text=commits.x_summary(g))["post-x.txt"]
+    assert "New: word word" in x and "word…" in x and x_len(x) <= X_LIMIT
 
 # --- git (read-only) ---
 

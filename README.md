@@ -85,8 +85,8 @@ marks it breaking. Commits are grouped into:
 `chore`, `ci`, `test`, `docs`, `style` and `build` are skipped by default. The groups become `release-notes.md`
 (`### Features` and so on, `**scope:**` before the description), and that Markdown goes through the same pipeline as a
 GitHub release body: Nexus changelog, Nexus description and Reddit post. The X post summarizes one sentence per group,
-most important first (`Breaking: ... New: ... Fixed: ...`), keeping only whole sentences that fit in 280 characters. If
-every commit in the range is skipped, the bot warns and drafts a "Maintenance release" note.
+most important first (`Breaking: ... New: ... Fixed: ...`), keeping only whole sentences that fit in 280 characters;
+if even the first one is too long, it is cut at a word and ends in `…`. If every commit in the range is skipped, the bot warns and drafts a "Maintenance release" note.
 
 Change the skipped types for all mods in `[defaults]` or per mod. The list replaces the default; `[]` keeps everything:
 
