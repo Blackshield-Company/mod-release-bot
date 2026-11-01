@@ -57,7 +57,8 @@ def x_len(text: str) -> int:
     return len(re.sub(r"https?://\S+", "x" * X_URL_LEN, text))
 
 
-def build(mod: Mod, rel: dict) -> dict[str, str]:
+def build(mod: Mod, rel: dict, x_text: str | None = None) -> dict[str, str]:
+    """`x_text` overrides the text the X post summarizes (commit mode passes one sentence per group)."""
     notes = clean_notes(rel["body"])
     ver = version(rel["tag"])
     link = mod.nexus_url or rel["url"]
@@ -73,7 +74,7 @@ def build(mod: Mod, rel: dict) -> dict[str, str]:
     tags = " ".join(f"#{h}" for h in mod.hashtags)
     fixed = _env.get_template("post-x.txt.j2").render(**ctx, tags=tags, blurb="")
     room = X_LIMIT - x_len(fixed)
-    ctx_x = dict(ctx, tags=tags, blurb=summary(notes or mod.blurb, max(0, room)))
+    ctx_x = dict(ctx, tags=tags, blurb=summary(x_text or notes or mod.blurb, max(0, room)))
     x = _env.get_template("post-x.txt.j2").render(**ctx_x)
     if x_len(x) > X_LIMIT:  # hashtags are the first thing to go
         x = _env.get_template("post-x.txt.j2").render(**dict(ctx_x, tags=""))

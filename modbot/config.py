@@ -2,6 +2,8 @@
 import tomllib
 from dataclasses import dataclass, field
 
+from .commits import DEFAULT_SKIP
+
 NEXUS_GAME = "skyrimspecialedition"
 
 
@@ -13,6 +15,9 @@ class Mod:
     hashtags: list[str] = field(default_factory=lambda: ["Skyrim", "SkyrimMods"])
     subreddit: str = "skyrimmods"
     blurb: str = ""
+    # Conventional-commit types left out of commit-based notes (breaking changes always stay in).
+    skip_commit_types: list[str] = field(default_factory=lambda: list(DEFAULT_SKIP))
+    checkout: str | None = None  # local clone used by `draft --from-commits`; --repo-dir overrides it
 
     @property
     def slug(self) -> str:
@@ -32,6 +37,9 @@ def load(path) -> dict[str, Mod]:
     for slug, m in data.get("mods", {}).items():
         merged = {**defaults, **m}
         repo = merged.pop("repo", f"{owner}/{slug}")
+        skip = merged.get("skip_commit_types", DEFAULT_SKIP)
+        if not isinstance(skip, list) or not all(isinstance(t, str) for t in skip):
+            raise ValueError(f"mods.{slug}.skip_commit_types must be a list of strings")
         mods[repo.lower()] = Mod(repo=repo, **merged)
     return mods
 
